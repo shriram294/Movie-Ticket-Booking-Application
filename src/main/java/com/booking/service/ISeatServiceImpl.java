@@ -13,8 +13,10 @@ public class ISeatServiceImpl implements ISeatService {
 	private ISeatRepository repository;
 	@Override
 	public Seat bookSeat(Seat seat) {
+		return repository.save(seat);
+		
 	
-		return repository.saveAll(seat);
+		
 		// TODO Auto-generated method stub		
 	}
 
