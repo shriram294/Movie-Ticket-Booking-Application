@@ -22,7 +22,7 @@ import com.netjstech.entities.Show;
 import com.netjstech.service.IShowService;
 
 @RestController
-@RequestMapping("/Show")
+@RequestMapping("/show")
 public class IShowController {
 
 	@Autowired
@@ -46,7 +46,7 @@ public class IShowController {
 	{
 		return showService.updateShow(show);
 	}
-	@DeleteMapping("/{Shows}")
+	@DeleteMapping("/show")
 	public Show removeShow(Show show)
 	{
 		return showService.removeShow(show);		
@@ -55,8 +55,8 @@ public class IShowController {
 	public List<Show>viewList(){
 		return showService.viewAllshows();
 	}
-	@GetMapping("show/{theatreid}")
-	public List<Show>viewShowList(@PathVariable int theatreid)
+	@GetMapping("/show")
+	public List<Show>viewShowList(int theatreid)
 	{
 		return showService.viewShowList(theatreid);
 	}
@@ -66,4 +66,5 @@ public class IShowController {
 		return showService.viewallList(date);
 		
 	}
+	
 }

@@ -54,11 +54,13 @@ public class IShowServiceImpl implements IShowService {
 		
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public List<Show> viewShowList(int theatreid) {
 		// TODO Auto-generated method stub
-		return (List<Show>) repository.findById(theatreid).get();
+		return repository.viewShowList(theatreid);
+		
+	
 	}
 
 	@SuppressWarnings("unchecked")
@@ -73,6 +75,5 @@ public class IShowServiceImpl implements IShowService {
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
-
 	
 }

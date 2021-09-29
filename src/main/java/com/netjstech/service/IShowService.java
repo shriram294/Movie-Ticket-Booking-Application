@@ -11,8 +11,9 @@ public interface IShowService {
 	public Show updateShow(Show show);
 	public Show removeShow(Show show);
 	public Show viewShow(Show show);
-	public List<Show>viewShowList(int theatreid);
+	public List<Show>viewShowList(int theatreId);
 	public List<Show>viewallList(LocalDateTime date);
 	public List<Show>viewAllshows();
+	
 	
 }

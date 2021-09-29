@@ -1,5 +1,6 @@
 package com.netjstech.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -30,12 +31,15 @@ public class Theatre {
 	@Column(name="manager_contact")
 	private int managerContact;
 	
-	@OneToMany(mappedBy="theatre",cascade=CascadeType.ALL)
-	private List<Screen>listofScreens;
-	//@OneToMany(mappedBy="movie",cascade=CascadeType.ALL)
-
-	@OneToMany(mappedBy="movie",cascade=CascadeType.ALL)
-	private List<Movie>listofMovies;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "movie", referencedColumnName = "theatre_id")
+	List<Movie> listOfMovies = new ArrayList<Movie>();
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "theatre", referencedColumnName = "theatre_id")
+	List<Screen> listOfScreens = new ArrayList<Screen>();
+	
+	
 
 	public int getTheatreId() {
 		return theatreId;
@@ -77,21 +81,23 @@ public class Theatre {
 		this.managerContact = managerContact;
 	}
 
-	public List<Screen> getListofScreens() {
-		return listofScreens;
+	public List<Movie> getListOfMovies() {
+		return listOfMovies;
 	}
 
-	public void setListofScreens(List<Screen> listofScreens) {
-		this.listofScreens = listofScreens;
+	public void setListOfMovies(List<Movie> listOfMovies) {
+		this.listOfMovies = listOfMovies;
 	}
 
-	public List<Movie> getListofMovies() {
-		return listofMovies;
+	public List<Screen> getListOfScreens() {
+		return listOfScreens;
 	}
 
-	public void setListofMovies(List<Movie> listofMovies) {
-		this.listofMovies = listofMovies;
+	public void setListOfScreens(List<Screen> listOfScreens) {
+		this.listOfScreens = listOfScreens;
 	}
+
+	
 
 	
 }

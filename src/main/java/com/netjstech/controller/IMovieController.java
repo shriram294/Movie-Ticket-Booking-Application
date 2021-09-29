@@ -22,13 +22,13 @@ import com.netjstech.entities.Movie;
 import com.netjstech.service.IMovieService;
 
 @RestController
-@RequestMapping("/Movie")
+@RequestMapping("/movie")
 public class IMovieController {
 
 	@Autowired
 	IMovieService movieService;
 	
-	@PostMapping("/{movies}")
+	@PostMapping("/movie")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Movie> addMovie(@RequestBody Movie movie)
 	{
@@ -44,19 +44,27 @@ public class IMovieController {
 	{
 		return movieService.updateMovie(movie);
 	}
-	@DeleteMapping("Movie/{movieid}")
+	@DeleteMapping("movie/{movieid}")
+	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<String> deleteMovie(@PathVariable int movieid)
 	{
-		movieService.removeMovie(movieid);
-		return new ResponseEntity<>("Movie Successfully deleted",HttpStatus.OK);
+		Movie m=movieService.removeMovie(movieid);
+		if(m==null)
+		{
+			return new ResponseEntity<String>("Movie Successfully deleted",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>("Problem in deleting",HttpStatus.OK);
+		}
 	}
 	@GetMapping
 	public List<Movie>viewMovieList()
 	{
 		return movieService.viewMovieList();
 	}
-	@GetMapping("Movie/{theatreid}")
-	public List<Movie> viewMovieList(@PathVariable int theatreid)
+	@GetMapping("/movie")
+	public List<Movie> viewMovieList(int theatreid)
 	{
 		return movieService.viewMovieList(theatreid);
 		

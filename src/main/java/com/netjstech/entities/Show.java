@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,19 +40,14 @@ public class Show {
 	@Column(name="show_name")
 	private String showName;
 	
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@Column(name="screen_id")
+	private int screenid;
+	
+	@Column(name="theatre_id")
+	private int theatreid;
+	
+	@OneToOne(mappedBy="show",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Movie movie;
-	
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="screen_id")
-	private Screen screen;
-	
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="theatre_id")
-	private Theatre theatre;
-
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private Show show;
 	
 	public int getShowId() {
 		return showId;
@@ -84,6 +81,22 @@ public class Show {
 		this.showName = showName;
 	}
 
+	public int getScreenid() {
+		return screenid;
+	}
+
+	public void setScreenid(int screenid) {
+		this.screenid = screenid;
+	}
+
+	public int getTheatreid() {
+		return theatreid;
+	}
+
+	public void setTheatreid(int theatreid) {
+		this.theatreid = theatreid;
+	}
+	@JsonIgnore
 	public Movie getMovie() {
 		return movie;
 	}
@@ -91,22 +104,6 @@ public class Show {
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
-
-	public Screen getScreen() {
-		return screen;
-	}
-
-	public void setScreen(Screen screen) {
-		this.screen = screen;
-	}
-
-	public Theatre getTheatre() {
-		return theatre;
-	}
-
-	public void setTheatre(Theatre theatre) {
-		this.theatre = theatre;
-	}
-
+	
 	
 }

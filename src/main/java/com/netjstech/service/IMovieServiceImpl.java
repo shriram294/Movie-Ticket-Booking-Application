@@ -1,6 +1,7 @@
 package com.netjstech.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,16 +22,13 @@ public class IMovieServiceImpl implements IMovieService {
 	private IMovieRepository repository;
 	@Override
 	public Movie addMovie(Movie movie) {
-		
 		return repository.save(movie);
-		// TODO Auto-generated method stub
-			
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public Movie updateMovie(Movie movie) {
 		// TODO Auto-generated method stub
-		
 		Movie m=repository.findById(movie.getMovieid()).orElseThrow(
 				()->new EntityNotFoundException("No Movie found here!"));
 			m.setMoviegenre(movie.getMoviegenre());
@@ -49,18 +47,21 @@ public class IMovieServiceImpl implements IMovieService {
 	@Override
 	public List<Movie> viewMovieList() {
 		// TODO Auto-generated method stub
-		return repository.findAll();
+		List<Movie>movielist=null;
+		movielist=repository.findAll();
+		return movielist;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
+	
+	
 	public List<Movie> viewMovieList(int theatreid) {
 		// TODO Auto-generated method stub
-		return (List<Movie>) repository.findById(theatreid).get();
+		return repository.findAll();
 	}
 
 	@Override
 	public List<Movie> viewMovieList(LocalDate date) {
+		
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
