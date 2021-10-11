@@ -63,11 +63,11 @@ public class IShowServiceImpl implements IShowService {
 	
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
-	public List<Show> viewallList(LocalDateTime date) {
+	public List<Show>viewallList(LocalDateTime date) {
 		// TODO Auto-generated method stub
-		return (List<Show>) repository.findById(date.getHour()).get();
+		return repository.viewallList(date);
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public class IMovieController {
 	}
 	@DeleteMapping("movie/{movieid}")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<String> deleteMovie(@PathVariable int movieid)
+	public ResponseEntity<String> deleteMovie(@RequestBody @PathVariable int movieid)
 	{
 		Movie m=movieService.removeMovie(movieid);
 		if(m==null)

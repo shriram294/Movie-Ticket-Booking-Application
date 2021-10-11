@@ -19,4 +19,7 @@ public interface IBookingRepository extends JpaRepository<TicketBooking,Integer>
 	
 	@Query("SELECT u from TicketBooking u where u.showid=:showid")
 	public List<TicketBooking> showBookingListById(@Param(value="showid")int showid);
+	
+//	@Query("SELECT u from TicketBooking u where u.totalCost=:totalCost")
+//	public double calculateTotalCost(@Param(value="totalCost")int transactionid);
 }

@@ -46,14 +46,14 @@ public class IBookingController {
 		return ResponseEntity.created(location).body(book);
 	}
 	@PutMapping
-	public TicketBooking updateBooking(TicketBooking booking)
+	public TicketBooking updateBooking(@RequestBody TicketBooking booking)
 	{
 		return IBookingService.updateBooking(booking);
 		
 	}
 	@DeleteMapping("/ticket")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<TicketBooking> cancelBooking(TicketBooking booking)
+	public ResponseEntity<TicketBooking> cancelBooking(@RequestBody TicketBooking booking)
 	{
 		TicketBooking book=IBookingService.cancelBooking(booking);
 		if(book==null)
@@ -80,9 +80,10 @@ public class IBookingController {
 	{
 		return IBookingService.showBookingListById(showid);
 	}
-//	@GetMapping
-//	public double calculateTotalCost(int bookingid)
+//	@GetMapping("/{transactionid}")
+//	public double calculateTotalCost(@PathVariable int transactionid)
 //	{
-//		return IBookingService.calculateTotalCost(bookingid);
+//		double result=IBookingService.calculateTotalCost(transactionid);
+//		return result;
 //	}
 }

@@ -30,7 +30,7 @@ public class ISeatController {
 		return seatService.cancelSeatBooking(seat);	
 	}
 	@PutMapping
-	public Seat blockSeat(Seat seat)
+	public Seat blockSeat(@RequestBody Seat seat)
 	{
 		return seatService.blockSeat(seat);
 	}

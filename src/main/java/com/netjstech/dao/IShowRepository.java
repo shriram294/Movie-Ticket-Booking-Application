@@ -16,7 +16,6 @@ public interface IShowRepository extends JpaRepository<Show,Integer>{
 	@Query("SELECT u from Show u where u.theatreid=:theatreid")
 	public List<Show> viewShowList(@Param(value = "theatreid")int theatreid);
 	
-	
 	@Query("SELECT u from Show u where u.showStartTime=:showStartTime")
 	public List<Show> viewallList(@Param(value="showStartTime")LocalDateTime date);
 }

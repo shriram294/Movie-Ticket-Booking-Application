@@ -32,7 +32,7 @@ public class IBookingServiceImpl implements IBookingService {
 		
 		TicketBooking ticket=repository.findById(booking.getTicketid()).orElseThrow(
 				()->new EntityNotFoundException("No ticket booking found"));
-		ticket.setTicketid(booking.getTicketid());
+		ticket.setTransactionStatus(booking.getTransactionStatus());
 		return repository.save(ticket);
 				
 	}
@@ -67,13 +67,12 @@ public class IBookingServiceImpl implements IBookingService {
 	//SHOW LIST OF BOOKING BY ID
 	public List<TicketBooking> showBookingListById(int showId) {
 		// TODO Auto-generated method stub
-		return repository.findAll();
+		return repository.showBookingListById(showId);
 	}
 
-	@Override
-	public double calculateTotalCost(int bookingid) {
-		// TODO Auto-generated method stub
-		double book = 0;
-		return book;
-	}
+//	@Override
+//	public double calculateTotalCost(int bookingid) {
+//		// TODO Auto-generated method stub
+//		return repository.calculateTotalCost(bookingid);
+//	}
 }
